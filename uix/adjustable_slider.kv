@@ -1,0 +1,45 @@
+#:import ValidatingSlider uix.validating_slider.ValidatingSlider
+
+<AdjustableSliderTextInput@TextInput>:
+    size_hint_y: 0.1
+    multiline: False
+    font_size: 11
+    padding: 0
+
+<AdjustableSlider>:
+    orientation: 'vertical'
+    value: slider.value
+
+    Label:
+        size_hint_y: 0.1
+        text: root.text
+
+    AdjustableSliderTextInput:
+        kvid: 'max'
+        text: str(root.max)
+        on_text_validate: slider.set_max(self.text)
+
+    ValidatingSlider:
+        id: slider
+        kvid: 'slider'
+        size_hint_y: 0.5
+        orientation: 'vertical'
+        min: root.min
+        max: root.max
+        step: root.step
+        value: root.init_value
+
+    Label:
+        size_hint_y: 0.1
+        text: str(slider.value)
+
+    AdjustableSliderTextInput:
+        kvid: 'min'
+        text: str(root.min)
+        on_text_validate: slider.set_min(self.text)
+
+    AdjustableSliderTextInput:
+        kvid: 'step'
+        text: str(root.step)
+        on_text_validate: slider.set_step(self.text)
+

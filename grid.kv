@@ -1,0 +1,205 @@
+#:import View uix.view.View
+#:import LabeledContainer uix.labeled_container.LabeledContainer
+#:import AdjustableSlider uix.adjustable_slider.AdjustableSlider
+#:import np numpy
+
+BoxLayout:
+    orientation: 'vertical'
+
+    Grid:
+        kvid: 'grid'
+        size_hint_y: 0.75
+        rows: 4
+        cols: 4
+
+        View:
+            kvid: 'raw'
+
+        View:
+            kvid: 'gray'
+
+        View:
+            kvid: 'edges'
+
+        View:
+            kvid: 'lines1'
+
+        View:
+            kvid: 'contours'
+
+        View:
+            kvid: 'dilated'
+
+        View:
+            kvid: 'corners1'
+
+        View:
+            kvid: 'centroids'
+
+        View:
+            kvid: 'polygon'
+
+        View:
+            kvid: 'min_area_rect'
+
+    BoxLayout:
+        size_hint_y: 0.25
+        orientation: 'horizontal'
+
+        BoxLayout:
+            size_hint_x: 0.02
+            orientation: 'vertical'
+
+            Widget:
+                size_hint_y: 0.1
+
+            BoxLayout:
+                size_hint_y: 0.9
+                orientation: 'vertical'
+
+                Widget:
+                    size_hint_y: 0.1
+
+                Label:
+                    size_hint_y: 0.1
+                    text: 'Max:'
+
+                Widget:
+                    size_hint_y: 0.6
+
+                Label:
+                    size_hint_y: 0.1
+                    text: 'Min:'
+
+                Label:
+                    size_hint_y: 0.1
+                    text: 'Step:'
+
+        LabeledContainer:
+            size_hint_x: 0.3
+            text: 'Edges'
+
+            BoxLayout:
+                size_hint_y: 0.9
+                orientation: 'horizontal'
+
+                AdjustableSlider:
+                    kvid: 'edges_min'
+                    text: 'Min'
+                    min: 0.0
+                    max: 60000.0
+                    step: 1.0
+                    init_value: 0.0
+
+                AdjustableSlider:
+                    kvid: 'edges_max'
+                    text: 'Max'
+                    min: 10000.0
+                    max: 40000.0
+                    step: 1.0
+                    init_value: 31000.0
+
+                AdjustableSlider:
+                    kvid: 'edges_aperture_size'
+                    text: 'Aperture Size'
+                    min: 3.0
+                    max: 7.0
+                    step: 2.0
+                    init_value: 7.0
+
+
+        LabeledContainer:
+            size_hint_x: 0.3
+            text: 'Lines1'
+
+            BoxLayout:
+                size_hint_y: 0.9
+                orientation: 'horizontal'
+
+                AdjustableSlider:
+                    kvid: 'lines1_rho'
+                    text: 'Rho:'
+                    min: 0.01
+                    max: 8.0
+                    step: 0.01
+                    init_value: 1.4
+
+                AdjustableSlider:
+                    kvid: 'lines1_theta'
+                    text: 'Theta:'
+                    min: 0.01
+                    max: 0.1
+                    step: 0.001
+                    init_value: 0.01
+
+                AdjustableSlider:
+                    kvid: 'lines1_threshold'
+                    text: 'Threshold:'
+                    min: 1.0
+                    max: 400.0
+                    step: 1.0
+                    init_value: 120.0
+
+                AdjustableSlider:
+                    kvid: 'lines1_min_line_len'
+                    text: 'Min Line Len'
+                    min: 0.0
+                    max: 400.0
+                    step: 1.0
+                    init_value: 100.0
+
+                AdjustableSlider:
+                    kvid: 'lines1_max_line_gap'
+                    text: 'Max Line Gap'
+                    min: 0.0
+                    max: 20.0
+                    step: 0.1
+                    init_value: 13.0
+
+                AdjustableSlider:
+                    kvid: 'lines1_line_width'
+                    text: 'Line Width'
+                    min: 1.0
+                    max: 20.0
+                    step: 1.0
+                    init_value: 10.0
+
+        LabeledContainer:
+            size_hint_x: 0.3
+            text: 'Corners'
+
+            BoxLayout:
+                size_hint_y: 0.9
+                orientation: 'horizontal'
+
+                AdjustableSlider:
+                    kvid: 'corners1_block_size'
+                    text: 'Block Size:'
+                    min: 1.0
+                    max: 30.0
+                    step: 1.0
+                    init_value: 30.0
+
+                AdjustableSlider:
+                    kvid: 'corners1_ksize'
+                    text: 'KSize:'
+                    min: 1.0
+                    max: 31.0
+                    step: 2.0
+                    init_value: 3.0
+
+                AdjustableSlider:
+                    kvid: 'corners1_k'
+                    text: 'K:'
+                    min: 0.0
+                    max: 0.5
+                    step: 0.001
+                    init_value: 0.07
+
+                AdjustableSlider:
+                    kvid: 'corners1_cutoff'
+                    text: 'Cutoff:'
+                    min: 0.0
+                    max: 1.0
+                    step: 0.001
+                    init_value: 0.01
